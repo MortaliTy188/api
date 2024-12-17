@@ -1,5 +1,5 @@
 const { Sequelize, DataTypes } = require("sequelize");
-const sequelize = require("../database"); // или путь к вашему файлу с настройками базы данных
+const sequelize = require("../database"); 
 
 const Document = sequelize.define(
   "Document",
