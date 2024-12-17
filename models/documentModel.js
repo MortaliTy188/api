@@ -34,7 +34,7 @@ const Document = sequelize.define(
     },
   },
   {
-    tableName: "Documents",
+    tableName: "documents",
     timestamps: false,
   }
 );
