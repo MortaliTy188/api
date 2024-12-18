@@ -22,6 +22,12 @@ const comment = sequelize.define("comment", {
     type: DataTypes.INTEGER,
     allowNull: false,
   },
+},
+{
+  timestamps: true,
+  createdAt: 'date_created',
+  updatedAt: 'date_updated'
 });
+
 
 module.exports = comment;
