@@ -1,5 +1,5 @@
 const { Sequelize, DataTypes } = require("sequelize");
-const sequelize = require("../database"); 
+const sequelize = require("../database");
 
 const Document = sequelize.define(
   "Document",
@@ -21,16 +21,6 @@ const Document = sequelize.define(
     },
     has_comments: {
       type: DataTypes.BOOLEAN,
-    },
-    createdAt: {
-      type: DataTypes.DATE,
-      allowNull: false,
-      defaultValue: Sequelize.NOW,
-    },
-    updatedAt: {
-      type: DataTypes.DATE,
-      allowNull: false,
-      defaultValue: Sequelize.NOW,
     },
   },
   {

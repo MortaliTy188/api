@@ -14,14 +14,12 @@ exports.createDocument = async (req, res) => {
       date_updated: new Date(),
       category,
       has_comments,
-      createdAt: new Date(),
-      updatedAt: new Date(),
     });
     res.status(201).json({
-      message: "Document created successfully",
+      message: "Документ успешно создан",
       document: newDocument,
     });
   } catch (error) {
-    res.status(500).json({ message: "Error creating document", error });
+    res.status(500).json({ message: "Ошибка создания документа", error });
   }
 };

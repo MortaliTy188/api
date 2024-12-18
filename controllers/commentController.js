@@ -17,21 +17,19 @@ exports.getComments = async (req, res) => {
 };
 
 exports.addComment = async (req, res) => {
-  const { text, author } = req.body;
+  const { text, authorId } = req.body;
   const { documentId } = req.params;
   try {
     const document = await Document.findByPk(documentId);
     if (!document) {
-      return res.status(404).json({ message: "Document not found" });
+      return res.status(404).json({ message: "Документ не найден" });
     }
     const newComment = await Comment.create({
+      document_id: documentId,
       text,
       date_created: new Date(),
       date_updated: new Date(),
       author,
-      document_id: documentId,
-      createdAt: new Date(),
-      updatedAt: new Date(),
     });
     res
       .status(201)
