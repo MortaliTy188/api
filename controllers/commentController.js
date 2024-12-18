@@ -17,7 +17,7 @@ exports.getComments = async (req, res) => {
 };
 
 exports.addComment = async (req, res) => {
-  const { text, authorId } = req.body;
+  const { text, author } = req.body;
   const { documentId } = req.params;
   try {
     const document = await Document.findByPk(documentId);
