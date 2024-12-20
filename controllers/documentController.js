@@ -16,10 +16,15 @@ exports.createDocument = async (req, res) => {
       has_comments,
     });
     res.status(201).json({
+      timestamp: Date.now(),
       message: "Документ успешно создан",
       document: newDocument,
     });
   } catch (error) {
-    res.status(500).json({ message: "Ошибка создания документа", error });
+    res.status(500).json({
+      timestamp: Date.now(),
+      message: "Ошибка создания документа",
+      errorCode: 2342,
+    });
   }
 };

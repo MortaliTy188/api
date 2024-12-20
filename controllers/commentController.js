@@ -32,7 +32,11 @@ exports.addComment = async (req, res) => {
   try {
     const document = await Document.findByPk(documentId);
     if (!document) {
-      return res.status(404).json({ message: "Документ не найден" });
+      return res.status(404).json({
+        timestamp: Date.now(),
+        message: "Документ не найден",
+        errorCode: 2345,
+      });
     }
     const newComment = await Comment.create({
       document_id: documentId,
@@ -41,12 +45,16 @@ exports.addComment = async (req, res) => {
       date_updated: new Date(),
       author,
     });
-    res
-      .status(201)
-      .json({ message: "Комментарий добавлен", comment: newComment });
+    res.status(201).json({
+      timestamp: Date.now(),
+      message: "Комментарий добавлен",
+      comment: newComment,
+    });
   } catch (error) {
-    res
-      .status(500)
-      .json({ message: "Ошибка при добавлении комментария", error });
+    res.status(500).json({
+      timestamp: Date.now(),
+      message: "Ошибка при добавлении комментария",
+      errorCode: 2343,
+    });
   }
 };
