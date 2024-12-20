@@ -3,6 +3,16 @@ const Document = require("../models/documentModel");
 
 exports.getComments = async (req, res) => {
   const documentId = parseInt(req.params.documentId);
+
+  const document = await Document.findByPk(documentId);
+  if (!document) {
+    return res.status(404).json({
+      timestamp: Date.now(),
+      message: "Документ не найден",
+      errorCode: 2345,
+    });
+  }
+
   const comments = await Comment.findAll({
     where: { document_id: documentId },
   });

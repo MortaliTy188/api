@@ -7,6 +7,6 @@ const authenticateJWT = require("../middlewares/authenticateJWT");
 const router = express.Router();
 
 router.get("/Documents", authenticateJWT, getDocuments);
-router.post("/Documents", createDocument);
+router.post("/Documents", authenticateJWT, createDocument);
 
 module.exports = router;
